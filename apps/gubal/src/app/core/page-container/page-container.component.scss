@@ -1,0 +1,57 @@
+h2 {
+  margin: 0 0 5px;
+}
+
+.block-container {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: solid 1px #000;
+  background: #111 linear-gradient(to bottom, #444 0, #333 100%);
+  background-size: 100% 100%;
+  box-shadow: 0 1px 3px #222;
+}
+
+.details-tabs {
+  width: 200px;
+}
+
+.right-sider {
+  width: 200px;
+}
+
+.external-link {
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, .3);
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-icon {
+  width: 24px;
+  margin-right: 5px;
+}
+
+.details {
+  background: rgba(255, 255, 255, .2);
+  padding: 10px 10px 25px 0;
+}
+
+.tab-row {
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, .3);
+  cursor: pointer;
+  &.faded {
+    background-color: rgba(0, 0, 0, .5);
+    opacity: .5;
+  }
+  &:hover {
+    background-color: rgba(0, 204, 32, 0.2);
+  }
+  &.active {
+    background-color: rgba(0, 204, 32, 0.5);
+  }
+  .tab-counter {
+    width: 35px;
+  }
+}

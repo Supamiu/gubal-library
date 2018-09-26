@@ -1,28 +1,25 @@
-<div *ngIf="item$ | async as item">
-  <div class="item-banner block-container" fxLayout="row" fxLayoutAlign="space-between center">
-    <div class="icon-and-name" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="10px">
-      <gubal-icon [icon]="item.Icon"></gubal-icon>
-      <div class="name-and-desc" fxLayout="column">
-        <h2>{{item.Name}}</h2>
-        <span
-          class="categories">ITEM - {{item.ItemKind.Name | uppercase}} - {{item.ItemUICategory.Name | uppercase}}</span>
-      </div>
-    </div>
-    <div class="patch" fxLayout="column" fxLayoutAlign="flex-end flex-end" fxLayoutGap="5px">
-      <span class="patch-label">PATCH</span>
-      <span class="patch-name">{{item.GamePatch.Name}}</span>
+<gubal-page-container [data]="item$ | async" [tabs]="tabs$ | async" [externalLinks]="externalLinks$ | async"></gubal-page-container>
+
+<ng-template let-item #details>
+  <div class="details-block">
+    <gubal-details-block title="DESCRIPTION" *ngIf="item.Description">
+      <span [innerHtml]="item.Description | xivUIText"></span>
+    </gubal-details-block>
+  </div>
+  <div class="specific-details">
+    <div *ngIf="item.ItemAction">
+      <gubal-item-action-details [action]="item.ItemAction"></gubal-item-action-details>
     </div>
   </div>
-  <div class="details" fxLayout="row" fxLayoutGap="10px">
-    <div class="details-tabs">
-
-    </div>
-    <div class="details-content">
-      <span class="description" [innerHtml]="item.Description | xivUIText">
-      </span>
-    </div>
-    <div class="external-links">
-
-    </div>
-  </div>
-</div>
+  <gubal-details-row>
+    <gubal-details-block title="ITEM LEVEL">
+      {{item.LevelItem}}
+    </gubal-details-block>
+    <gubal-details-block title="REQUIRED LEVEL">
+      {{item.LevelEquip}}
+    </gubal-details-block>
+    <gubal-details-block title="SELLS FOR">
+      {{item.PriceLow}}
+    </gubal-details-block>
+  </gubal-details-row>
+</ng-template>

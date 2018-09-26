@@ -1,0 +1,43 @@
+<div *ngIf="data !== null; else loader">
+  <div class="item-banner block-container" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="icon-and-name" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="10px">
+      <gubal-icon [icon]="data.Icon"></gubal-icon>
+      <div class="name-and-desc" fxLayout="column">
+        <h2>{{data.Name}}</h2>
+        <span
+          class="categories">ITEM - {{data.ItemKind.Name | uppercase}} - {{data.ItemUICategory.Name | uppercase}}</span>
+      </div>
+    </div>
+    <div class="patch" fxLayout="column" fxLayoutAlign="flex-end flex-end" fxLayoutGap="5px">
+      <span class="patch-name">{{data.GamePatch.Name}}</span>
+    </div>
+  </div>
+  <div class="details" fxLayout="row" fxLayoutGap="10px">
+    <div class="details-tabs" fxLayout="column" fxLayoutGap="5px">
+      <div *ngFor="let tab of tabs" class="tab-row" [class.active]="tab.active" [class.faded]="tab.counter === 0"
+           fxLayout="row" (click)="selectTab(tab)">
+        <div class="tab-counter">{{tab.counter}}</div>
+        <div class="tab-title">{{tab.title}}</div>
+      </div>
+    </div>
+    <div fxFlex="1 1 auto" *ngIf="getActiveTemplate() as templateRef; else wip">
+      <ng-container *ngTemplateOutlet="templateRef; context: {$implicit: data}"></ng-container>
+    </div>
+    <ng-template #wip>
+      <div fxFlex="1 1 auto">
+        Work in progress
+      </div>
+    </ng-template>
+    <div class="right-sider">
+      <div class="links" fxLayout="column" fxLayoutGap="3px">
+        <a class="external-link" *ngFor="let link of externalLinks" href="{{link.url}}" target="_blank"
+           fxFlex="1 1 auto" fxLayoutAlign="flex-start center">
+          <img class="link-icon" src="{{link.icon}}" alt=""> {{link.toolName}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loader>
+  <gubal-loader></gubal-loader>
+</ng-template>

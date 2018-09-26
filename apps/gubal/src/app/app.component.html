@@ -1,8 +1,16 @@
-<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px">
-  <div class="header">
+<div fxLayout="column" fxLayoutGap="5px">
+  <div class="header" fxFlex="1 1 auto">
     <h1 class="title">Gubal Library</h1>
   </div>
   <div class="content">
+    <div class="search-container" fxLayout="row" fxLayoutAlign="center center">
+      <div class="search-bar" fxLayoutAlign="center center">
+        <input type="text" class="search-input" placeholder="Search for..." #query (keyup)="searchQuery$.next(query.value)">
+      </div>
+    </div>
+    <pre>
+      {{results$ | async | json}}
+    </pre>
     <router-outlet></router-outlet>
   </div>
 </div>

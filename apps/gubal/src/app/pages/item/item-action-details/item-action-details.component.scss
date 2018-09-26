@@ -1,0 +1,12 @@
+.container {
+  text-shadow: 2px 1px black;
+}
+
+.stat-row {
+  width: 100%;
+  padding: 2px 20px;
+  background: rgba(0, 0, 0, .2);
+  .stat-name {
+    color: #ffc99a;
+  }
+}

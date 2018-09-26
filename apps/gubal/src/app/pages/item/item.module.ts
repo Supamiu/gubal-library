@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ItemRoutingModule } from './item-routing.module';
 import { ItemComponent } from './item/item.component';
 import { XivapiClientModule } from '@xivapi/angular-client';
-import { IconModule } from '../../modules/icon/icon.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GubalAngularToolsModule } from '../../../../../../libs/gubal-angular-tools/src';
+import { ItemActionDetailsComponent } from './item-action-details/item-action-details.component';
+import { CoreModule } from '../../core/core.module';
 
 @NgModule({
   imports: [
@@ -17,9 +18,9 @@ import { GubalAngularToolsModule } from '../../../../../../libs/gubal-angular-to
 
     XivapiClientModule,
 
-    IconModule,
+    CoreModule
   ],
-  declarations: [ItemComponent]
+  declarations: [ItemComponent, ItemActionDetailsComponent]
 })
 export class ItemModule {
 }

@@ -10,7 +10,7 @@
       "prefix": "gubal",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "less"
+          "styleext": ".scss"
         }
       },
       "architect": {
@@ -27,7 +27,7 @@
               "apps/gubal/src/assets"
             ],
             "styles": [
-              "apps/gubal/src/styles.less"
+              "apps/gubal/src/styles.scss"
             ],
             "scripts": []
           },
@@ -76,7 +76,7 @@
             "tsConfig": "apps/gubal/tsconfig.spec.json",
             "karmaConfig": "apps/gubal/karma.conf.js",
             "styles": [
-              "apps/gubal/src/styles.less"
+              "apps/gubal/src/styles.scss"
             ],
             "scripts": [],
             "assets": [

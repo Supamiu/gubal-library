@@ -1,0 +1,11 @@
+:host {
+  flex: 1 1 auto;
+  .details-block {
+    background-color: rgba(0, 0, 0, .5);
+    padding: 10px;
+    .details-title {
+      color: #ffc99a;
+      font-size: 10px;
+    }
+  }
+}
