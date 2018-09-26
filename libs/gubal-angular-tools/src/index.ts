@@ -1,1 +1,1 @@
-export * from './lib/xiv-angular-tools.module';
+export * from './lib/gubal-angular-tools.module';
