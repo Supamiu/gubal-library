@@ -8,6 +8,7 @@ import { XivapiClientModule } from '@xivapi/angular-client';
 import { ItemModule } from './pages/item/item.module';
 import { ItemRoutingModule } from './pages/item/item-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     XivapiClientModule.forRoot('cb3e18f360c44641822c65a1'),
 
     ItemModule,
-    ItemRoutingModule
+    ItemRoutingModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

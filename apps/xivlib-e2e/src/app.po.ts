@@ -6,6 +6,6 @@ export class AppPage {
   }
 
   getParagraphText() {
-    return element(by.css('xivlib-root h1')).getText();
+    return element(by.css('gubal-root h1')).getText();
   }
 }

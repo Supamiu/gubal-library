@@ -5,11 +5,11 @@ import { XivapiEndpoint, XivapiService } from '@xivapi/angular-client';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'xivlib-item',
+  selector: 'gubal-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.less']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
 
   item$: Observable<any>;
 
@@ -18,9 +18,6 @@ export class ItemComponent implements OnInit {
       map(params => params.get('itemId')),
       mergeMap(itemId => xivapi.get(XivapiEndpoint.Item, +itemId))
     )
-  }
-
-  ngOnInit() {
   }
 
 }

@@ -10,7 +10,7 @@ module.exports = function(config) {
     ...baseConfig,
     coverageIstanbulReporter: {
       ...baseConfig.coverageIstanbulReporter,
-      dir: join(__dirname, '../../coverage/apps/xivlib')
+      dir: join(__dirname, '../../coverage/libs/gubal-angular-tools')
     }
   });
 };

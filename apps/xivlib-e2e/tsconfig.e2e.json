@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/xivlib-e2e",
+    "outDir": "../../dist/out-tsc/apps/gubal-e2e",
     "module": "commonjs",
     "target": "es5",
     "types": [

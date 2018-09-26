@@ -1,5 +1,5 @@
 {
-  "npmScope": "xivlib",
+  "npmScope": "gubal",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -8,10 +8,13 @@
     "nx.json": "*"
   },
   "projects": {
-    "xivlib": {
+    "gubal": {
       "tags": []
     },
-    "xivlib-e2e": {
+    "gubal-e2e": {
+      "tags": []
+    },
+    "gubal-angular-tools": {
       "tags": []
     }
   }

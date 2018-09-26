@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "xivlib": {
-      "root": "apps/xivlib/",
-      "sourceRoot": "apps/xivlib/src",
+    "gubal": {
+      "root": "apps/gubal/",
+      "sourceRoot": "apps/gubal/src",
       "projectType": "application",
-      "prefix": "xivlib",
+      "prefix": "gubal",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "less"
@@ -17,17 +17,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/xivlib",
-            "index": "apps/xivlib/src/index.html",
-            "main": "apps/xivlib/src/main.ts",
-            "polyfills": "apps/xivlib/src/polyfills.ts",
-            "tsConfig": "apps/xivlib/tsconfig.app.json",
+            "outputPath": "dist/apps/gubal",
+            "index": "apps/gubal/src/index.html",
+            "main": "apps/gubal/src/main.ts",
+            "polyfills": "apps/gubal/src/polyfills.ts",
+            "tsConfig": "apps/gubal/tsconfig.app.json",
             "assets": [
-              "apps/xivlib/src/favicon.ico",
-              "apps/xivlib/src/assets"
+              "apps/gubal/src/favicon.ico",
+              "apps/gubal/src/assets"
             ],
             "styles": [
-              "apps/xivlib/src/styles.less"
+              "apps/gubal/src/styles.less"
             ],
             "scripts": []
           },
@@ -35,8 +35,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/xivlib/src/environments/environment.ts",
-                  "with": "apps/xivlib/src/environments/environment.prod.ts"
+                  "replace": "apps/gubal/src/environments/environment.ts",
+                  "with": "apps/gubal/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -54,34 +54,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "xivlib:build"
+            "browserTarget": "gubal:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "xivlib:build:production"
+              "browserTarget": "gubal:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "xivlib:build"
+            "browserTarget": "gubal:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "apps/xivlib/src/test.ts",
-            "polyfills": "apps/xivlib/src/polyfills.ts",
-            "tsConfig": "apps/xivlib/tsconfig.spec.json",
-            "karmaConfig": "apps/xivlib/karma.conf.js",
+            "main": "apps/gubal/src/test.ts",
+            "polyfills": "apps/gubal/src/polyfills.ts",
+            "tsConfig": "apps/gubal/tsconfig.spec.json",
+            "karmaConfig": "apps/gubal/karma.conf.js",
             "styles": [
-              "apps/xivlib/src/styles.less"
+              "apps/gubal/src/styles.less"
             ],
             "scripts": [],
             "assets": [
-              "apps/xivlib/src/favicon.ico",
-              "apps/xivlib/src/assets"
+              "apps/gubal/src/favicon.ico",
+              "apps/gubal/src/assets"
             ]
           }
         },
@@ -89,8 +89,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/xivlib/tsconfig.app.json",
-              "apps/xivlib/tsconfig.spec.json"
+              "apps/gubal/tsconfig.app.json",
+              "apps/gubal/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -100,33 +100,61 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/xivlib-server",
-            "main": "apps/xivlib/src/main.server.ts",
-            "tsConfig": "apps/xivlib/tsconfig.server.json"
+            "outputPath": "dist/gubal-server",
+            "main": "apps/gubal/src/main.server.ts",
+            "tsConfig": "apps/gubal/tsconfig.server.json"
           }
         }
       }
     },
-    "xivlib-e2e": {
-      "root": "apps/xivlib-e2e/",
+    "gubal-e2e": {
+      "root": "apps/gubal-e2e/",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "apps/xivlib-e2e/protractor.conf.js",
-            "devServerTarget": "xivlib:serve"
+            "protractorConfig": "apps/gubal-e2e/protractor.conf.js",
+            "devServerTarget": "gubal:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "xivlib:serve:production"
+              "devServerTarget": "gubal:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "apps/xivlib-e2e/tsconfig.e2e.json",
+            "tsConfig": "apps/gubal-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "gubal-angular-tools": {
+      "root": "libs/gubal-angular-tools",
+      "sourceRoot": "libs/gubal-angular-tools/src",
+      "projectType": "library",
+      "prefix": "gubal",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/gubal-angular-tools/src/test.ts",
+            "tsConfig": "libs/gubal-angular-tools/tsconfig.spec.json",
+            "karmaConfig": "libs/gubal-angular-tools/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/gubal-angular-tools/tsconfig.lib.json",
+              "libs/gubal-angular-tools/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
@@ -142,5 +170,5 @@
     },
     "defaultCollection": "@nrwl/schematics"
   },
-  "defaultProject": "xivlib"
+  "defaultProject": "gubal"
 }
