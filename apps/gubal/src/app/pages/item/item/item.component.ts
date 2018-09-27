@@ -41,77 +41,42 @@ export class ItemComponent implements OnInit {
             toolName: 'Gamer Escape',
             icon: 'https://xivdb.com/img/ui/GE.png'
           }
-        ]
-      })
-    )
-  }
-
-  ngOnInit(): void {
-    this.blocks$ = this.item$.pipe(
-      map(item => {
-        return [
-          {
-            title: PageContainerBlock.DETAILS,
-            template: this.detailsRef
-          },
-          {
-            title: PageContainerBlock.COMMENTS,
-            template: null
-          },
-          {
-            title: PageContainerBlock.SCREENSHOTS,
-            template: null
-          },
-          {
-            title: PageContainerBlock.QUESTS,
-            template: null
-          },
-          {
-            title: PageContainerBlock.INSTANCES,
-            template: null
-          },
-          {
-            title: PageContainerBlock.ENEMIES,
-            template: null
-          },
-          {
-            title: PageContainerBlock.RECIPES,
-            template: null
-          },
-          {
-            title: PageContainerBlock.CREATED_FROM,
-            template: null
-          },
-          {
-            title: PageContainerBlock.SHOPS,
-            template: null
-          },
-          {
-            title: PageContainerBlock.SPECIAL_SHOPS,
-            template: null
-          },
-          {
-            title: PageContainerBlock.CURRENCY,
-            template: null
-          },
-          {
-            title: PageContainerBlock.GATHERING,
-            template: null
-          },
-          {
-            title: PageContainerBlock.GUILD_LEVES,
-            template: null
-          }
         ];
       })
     );
   }
 
-  private getLinkCount(item: any, propertyName: string): number {
-    if (item.GameContentLinks[propertyName] === undefined) {
-      return 0;
-    }
-    return Object.keys(item.GameContentLinks[propertyName]).length;
+  ngOnInit(): void {
+    this.blocks$ = this.item$.pipe(
+      map(item => {
+        const blocks: PageContainerBlockEntry[] = [
+          {
+            title: PageContainerBlock.DETAILS,
+            template: this.detailsRef
+          }
+        ];
+
+        if (item.GameContentLinks.Recipe) {
+          blocks.push(
+            {
+              title: PageContainerBlock.RECIPES,
+              template: null
+            }
+          );
+        }
+
+        if (item.GameContentLinks.Quest) {
+          blocks.push(
+            {
+              title: PageContainerBlock.QUESTS,
+              template: null
+            }
+          );
+        }
+
+        return blocks;
+      })
+    );
   }
 
 }

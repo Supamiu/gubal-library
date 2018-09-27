@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutGap="5px">
+  <gubal-details-row>
+    <gubal-details-block [title]="'CLASS/JOB'">
+      {{item.ClassJobUse.Abbreviation}}
+    </gubal-details-block>
+    <gubal-details-block [title]="'MATERIA SLOTS'">
+      {{item.MateriaSlotCount}}
+    </gubal-details-block>
+  </gubal-details-row>
+  <gubal-details-row>
+    <gubal-details-block [title]="'DAMAGE'">
+      {{item.DamagePhys > item.DamageMag ? item.DamagePhys : item.DamageMag}}
+    </gubal-details-block>
+    <gubal-details-block [title]="'AUTO'">
+      {{item.MateriaSlotCount}}
+    </gubal-details-block>
+    <gubal-details-block [title]="'DELAY'">
+      {{item.DelayMs/1000}}
+    </gubal-details-block>
+  </gubal-details-row>
+  <gubal-details-block>
+    <div class="stat-row" *ngFor="let stat of getStats()" gdColumns="2">
+      <div class="stat-name" fxFlex>{{stat.name}}</div>
+      <div class="stat-value" fxFlex>{{stat.value}}</div>
+    </div>
+  </gubal-details-block>
+</div>

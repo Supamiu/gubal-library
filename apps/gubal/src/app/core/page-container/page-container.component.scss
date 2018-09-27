@@ -1,4 +1,4 @@
-h2 {
+h2, h3 {
   margin: 0 0 5px;
 }
 
@@ -6,15 +6,36 @@ h2 {
   padding: 20px;
 }
 
+.item-banner {
+  margin-bottom: 10px;
+}
+
+.description {
+  margin-bottom: 10px;
+}
+
 .details-card {
-  width: 500px;
   max-width: 80vw;
+  margin-bottom: 10px;
   padding: 10px;
-  background-color: rgba(255, 255, 255, .3);
+  background-color: rgba(0, 0, 0, .3);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.link-icon {
-  width: 24px;
-  margin-right: 5px;
+gubal-details-block.item-card {
+  max-width: 400px;
+}
+
+.patch {
+  font-style: italic;
+  color: rgba(255, 255, 255, .6)
+}
+
+.external-link {
+  color: inherit;
+  text-decoration: none;
+  .link-icon {
+    width: 24px;
+    margin-right: 5px;
+  }
 }
