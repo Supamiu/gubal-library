@@ -1,0 +1,27 @@
+<div class="results" fxLayout="row wrap" fxLayoutGap="10px" *ngIf="results$ | async as results; else loader">
+  <a class="result" *ngFor="let result of results" fxLayout="column" [routerLink]="result.uri">
+    <div class="icon" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="10px">
+      <gubal-icon [icon]="result.Icon"></gubal-icon>
+      <div fxLayout="column" fxLayoutAlign="flex-start flex-start">
+        <span class="name">{{result.Name}}</span>
+        <span class="type">{{result.GameType}}</span>
+      </div>
+    </div>
+    <div class="details" fxLayout="column" fxLayoutGap="3px">
+      <gubal-details-row>
+        <gubal-details-block *ngIf="result.LevelItem" title="ilvl">
+          <span class="description">{{result.LevelItem}}</span>
+        </gubal-details-block>
+        <gubal-details-block *ngIf="result.LevelEquip" title="lvl">
+          <span class="description">{{result.LevelEquip}}</span>
+        </gubal-details-block>
+      </gubal-details-row>
+      <gubal-details-block *ngIf="result.Description">
+        <span class="description" [innerHTML]="result.Description | xivUIText"></span>
+      </gubal-details-block>
+    </div>
+  </a>
+</div>
+<ng-template #loader>
+  <gubal-loader></gubal-loader>
+</ng-template>

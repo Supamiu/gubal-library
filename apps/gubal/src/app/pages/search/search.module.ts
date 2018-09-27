@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ItemRoutingModule } from './item-routing.module';
-import { ItemComponent } from './item/item.component';
+import { SearchComponent } from './search/search.component';
 import { XivapiClientModule } from '@xivapi/angular-client';
+import { CoreModule } from '../../core/core.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GubalAngularToolsModule } from '../../../../../../libs/gubal-angular-tools/src';
-import { ItemActionDetailsComponent } from './item-action-details/item-action-details.component';
-import { CoreModule } from '../../core/core.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    CoreModule,
     FlexLayoutModule,
     GubalAngularToolsModule,
+    RouterModule,
 
-    XivapiClientModule,
-
-    CoreModule
+    XivapiClientModule
   ],
-  declarations: [ItemComponent, ItemActionDetailsComponent]
+  declarations: [SearchComponent]
 })
-export class ItemModule {
+export class SearchModule {
 }

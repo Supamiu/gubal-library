@@ -1,0 +1,15 @@
+export enum PageContainerBlock {
+  DETAILS = 'Details',
+  COMMENTS = 'Comments',
+  SCREENSHOTS = 'Screenshots',
+  QUESTS  = 'Quests',
+  INSTANCES = 'Instance',
+  ENEMIES = 'Enemies',
+  RECIPES = 'Recipes',
+  CREATED_FROM = 'Created from',
+  SHOPS = 'Shops',
+  SPECIAL_SHOPS = 'Special shops',
+  CURRENCY = 'Currency',
+  GATHERING = 'Gathering',
+  GUILD_LEVES = 'Guild leves',
+}

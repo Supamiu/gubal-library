@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
-import { PageContainerTabEntry } from './page-container-tab-entry';
+import { Component, Input } from '@angular/core';
+import { PageContainerBlockEntry } from './page-container-block-entry';
 import { ExternalLink } from '../model/external-link';
 
 @Component({
@@ -7,34 +7,18 @@ import { ExternalLink } from '../model/external-link';
   templateUrl: './page-container.component.html',
   styleUrls: ['./page-container.component.scss']
 })
-export class PageContainerComponent implements OnInit {
+export class PageContainerComponent {
 
   @Input()
   data: any;
 
   @Input()
-  tabs: PageContainerTabEntry[] = [];
+  blocks: PageContainerBlockEntry[] = [];
 
   @Input()
   externalLinks: ExternalLink[] = [];
 
   constructor() {
-  }
-
-  ngOnInit() {
-  }
-
-  public getActiveTemplate(): TemplateRef<any> {
-    if (this.tabs === null) {
-      return null;
-    }
-    const activeTab = this.tabs.find(tab => tab.active);
-    return activeTab !== undefined ? activeTab.template : null;
-  }
-
-  public selectTab(tab: PageContainerTabEntry): void {
-    this.tabs.forEach(t => t.active = false);
-    tab.active = true;
   }
 
 }

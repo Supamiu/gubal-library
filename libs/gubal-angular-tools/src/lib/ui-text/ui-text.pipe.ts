@@ -1,5 +1,4 @@
 import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { UIColor } from './ui-color';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';

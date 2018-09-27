@@ -1,5 +1,5 @@
 .header {
-  padding-left: 22px;
+  padding: 0 22px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin-bottom: 20px;
   .title {
@@ -11,20 +11,17 @@
   width: 100%;
   .search-input {
     width: 500px;
+    max-width: 80vw;
     font-size: 16px;
     padding: 0 15px;
     border: none;
     height: 45px;
     outline: 0;
-    color: rgba(255, 255, 255, .6);
-    background-color: #444;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, .6);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: width .2s linear;
-    &:focus {
-      width: 100%;
-    }
-    &.active {
-      width: 100%;
+    @media screen and (max-width: 795px){
+      margin-bottom: 10px;
     }
   }
 }

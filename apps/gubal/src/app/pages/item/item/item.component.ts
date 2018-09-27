@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { XivapiEndpoint, XivapiService } from '@xivapi/angular-client';
 import { map, mergeMap } from 'rxjs/operators';
-import { PageContainerTabEntry } from '../../../core/page-container/page-container-tab-entry';
-import { PageContainerTab } from '../../../core/page-container/page-container-tab';
+import { PageContainerBlockEntry } from '../../../core/page-container/page-container-block-entry';
+import { PageContainerBlock } from '../../../core/page-container/page-container-block';
 import { ExternalLink } from '../../../core/model/external-link';
 
 @Component({
@@ -16,7 +16,7 @@ export class ItemComponent implements OnInit {
 
   item$: Observable<any>;
 
-  tabs$: Observable<PageContainerTabEntry[]>;
+  blocks$: Observable<PageContainerBlockEntry[]>;
 
   @ViewChild('details')
   detailsRef: TemplateRef<any>;
@@ -47,73 +47,60 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tabs$ = this.item$.pipe(
+    this.blocks$ = this.item$.pipe(
       map(item => {
         return [
           {
-            title: PageContainerTab.DETAILS,
-            template: this.detailsRef,
-            active: true
+            title: PageContainerBlock.DETAILS,
+            template: this.detailsRef
           },
           {
-            title: PageContainerTab.COMMENTS,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.COMMENTS,
+            template: null
           },
           {
-            title: PageContainerTab.SCREENSHOTS,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.SCREENSHOTS,
+            template: null
           },
           {
-            title: PageContainerTab.QUESTS,
-            template: null,
-            counter: this.getLinkCount(item, 'Quest')
+            title: PageContainerBlock.QUESTS,
+            template: null
           },
           {
-            title: PageContainerTab.INSTANCES,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.INSTANCES,
+            template: null
           },
           {
-            title: PageContainerTab.ENEMIES,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.ENEMIES,
+            template: null
           },
           {
-            title: PageContainerTab.RECIPES,
-            template: null,
-            counter: this.getLinkCount(item, 'Recipe')
+            title: PageContainerBlock.RECIPES,
+            template: null
           },
           {
-            title: PageContainerTab.CREATED_FROM,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.CREATED_FROM,
+            template: null
           },
           {
-            title: PageContainerTab.SHOPS,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.SHOPS,
+            template: null
           },
           {
-            title: PageContainerTab.SPECIAL_SHOPS,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.SPECIAL_SHOPS,
+            template: null
           },
           {
-            title: PageContainerTab.CURRENCY,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.CURRENCY,
+            template: null
           },
           {
-            title: PageContainerTab.GATHERING,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.GATHERING,
+            template: null
           },
           {
-            title: PageContainerTab.GUILD_LEVES,
-            template: null,
-            counter: 0
+            title: PageContainerBlock.GUILD_LEVES,
+            template: null
           }
         ];
       })
