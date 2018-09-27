@@ -7,7 +7,6 @@ import { XivapiClientModule } from '@xivapi/angular-client';
 import { ItemModule } from './pages/item/item.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchModule } from './pages/search/search.module';
 import { WorkInProgressModule } from './pages/work-in-progress/work-in-progress.module';
 import { SearchRoutingModule } from './pages/search/search-routing.module';
@@ -17,7 +16,6 @@ import { ItemRoutingModule } from './pages/item/item-routing.module';
   declarations: [AppComponent],
   imports: [
     HttpClientModule,
-    BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),

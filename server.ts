@@ -3,25 +3,31 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 
 import { enableProdMode } from '@angular/core';
+import { ngExpressEngine } from '@nguniversal/express-engine';
+import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 
 import * as express from 'express';
 import { join } from 'path';
+import { readFileSync } from 'fs';
 
-// Faster server renders w/ Prod mode (dev mode never needed)
+// Polyfills required for Firebase
+(global as any).WebSocket = require('ws');
+(global as any).XMLHttpRequest = require('xhr2');
+
+// Faster renders in prod mode
 enableProdMode();
 
-// Express server
-const app = express();
+// Export our express server
+export const app = express();
 
-const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
+const APP_NAME = 'gubal';
 
-// * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/gubal-server/main');
-// Express Engine
-import { ngExpressEngine } from '@nguniversal/express-engine';
-// Import module map for lazy loading
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./dist/${APP_NAME}-server/main`);
+
+// index.html template
+const template = readFileSync(join(DIST_FOLDER, 'apps', APP_NAME, 'index.html')).toString();
 
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
@@ -31,17 +37,20 @@ app.engine('html', ngExpressEngine({
 }));
 
 app.set('view engine', 'html');
-app.set('views', join(DIST_FOLDER, 'apps/gubal'));
+app.set('views', join(DIST_FOLDER, 'apps', APP_NAME));
 
-// Server static files from /browser
-app.get('*.*', express.static(join(DIST_FOLDER, 'apps/gubal')));
+// Serve static files
+app.get('*.*', express.static(join(DIST_FOLDER, 'apps', APP_NAME)));
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-  res.render('index', { req });
+  res.render(join(DIST_FOLDER, 'apps', APP_NAME, 'index.html'), { req });
 });
 
-// Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node server listening on http://localhost:${PORT}`);
-});
+// If we're not in the Cloud Functions environment, spin up a Node server
+if (!process.env.FUNCTION_NAME) {
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`Node server listening on http://localhost:${PORT}`);
+  });
+}

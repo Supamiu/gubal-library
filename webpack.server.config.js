@@ -1,23 +1,34 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const APP_NAME = 'gubal';
+
 module.exports = {
-  entry: { server: './server.ts' },
+  entry: {  server: './server.ts' },
   resolve: { extensions: ['.js', '.ts'] },
+  mode: 'development',
   target: 'node',
-  mode: 'none',
-  // this makes sure we include node_modules and other 3rd party libraries
-  externals: [/node_modules/],
+  externals: [
+    /* Firebase has some troubles being webpacked when in
+       in the Node environment, let's skip it.
+       Note: you may need to exclude other dependencies depending
+       on your project. */
+    /^firebase/
+  ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    // Export a UMD of the webpacked server.ts & deps, for
+    // rendering in Cloud Functions
+    path: path.join(__dirname, `dist/${APP_NAME}-webpack`),
+    library: 'app',
+    libraryTarget: 'umd',
     filename: '[name].js'
   },
   module: {
-    rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
+    rules: [
+      { test: /\.ts$/, loader: 'ts-loader' }
+    ]
   },
   plugins: [
-    // Temporary Fix for issue: https://github.com/angular/angular/issues/11580
-    // for 'WARNING Critical dependency: the request of a dependency is an expression'
     new webpack.ContextReplacementPlugin(
       /(.+)?angular(\\|\/)core(.+)?/,
       path.join(__dirname, 'src'), // location of your src
@@ -29,4 +40,4 @@ module.exports = {
       {}
     )
   ]
-};
+}
