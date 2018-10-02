@@ -15,7 +15,7 @@ export class ItemGearDetailsComponent {
       return [];
     }
     return Object.keys(this.item)
-      .filter(key => /^BaseParam\d+$/.test(key) && this.item[key] !== 0)
+      .filter(key => /^BaseParam\d+$/.test(key) && this.item[key])
       .map(key => {
         const statIndex = key.match(/(\d+)/)[0];
         return {
