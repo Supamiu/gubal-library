@@ -10,3 +10,10 @@
     color: #ffc99a;
   }
 }
+
+.bonuses {
+  width: 100%;
+  @media screen and (min-width: 900px){
+    min-width: 500px;
+  }
+}

@@ -7,8 +7,7 @@ import { XivapiService } from '@xivapi/angular-client';
 @Component({
   selector: 'gubal-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
 

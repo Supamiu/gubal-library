@@ -1,14 +1,12 @@
 <gubal-page-container [data]="item$ | async" [blocks]="blocks$ | async" [externalLinks]="externalLinks$ | async"></gubal-page-container>
 
 <ng-template let-item #details>
-  <div class="details-block">
-    <gubal-details-block title="DESCRIPTION" *ngIf="item.Description">
-      <span [innerHtml]="item.Description | xivUIText"></span>
-    </gubal-details-block>
-  </div>
   <div class="specific-details">
-    <div *ngIf="item.ItemAction">
+    <div *ngIf="item.ItemAction && item.ItemAction.Type === 845">
       <gubal-item-action-details [action]="item.ItemAction"></gubal-item-action-details>
+    </div>
+    <div *ngIf="item.EquipSlotCategory">
+      <gubal-item-gear-details [item]="item"></gubal-item-gear-details>
     </div>
   </div>
   <gubal-details-row>

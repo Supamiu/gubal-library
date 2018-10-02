@@ -1,27 +1,28 @@
 <div *ngIf="data !== null; else loader" class="container">
-  <div class="item-banner block-container" fxLayout="row" fxLayoutAlign="space-between center">
-    <div class="icon-and-name" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="10px">
-      <gubal-icon [icon]="data.Icon"></gubal-icon>
-      <div class="name-and-desc" fxLayout="column">
-        <h2>{{data.Name}}</h2>
-        <span class="categories">{{data.ItemUICategory.Name}}</span>
+  <div class="item-banner" fxLayout="row wrap" fxLayout.lt-sm="column"
+       fxLayoutAlign="flex-start flex-start" fxLayoutAlign.lt-sm="center center" fxLayoutGap="10px">
+    <gubal-details-block class="item-card">
+      <div class="icon-and-name" fxLayout="row" fxLayoutAlign="flex-start flex-start" fxLayoutGap="10px">
+        <gubal-icon [icon]="data.Icon"></gubal-icon>
+        <div class="name-and-desc" fxLayout="column">
+          <h2>{{data.Name}}</h2>
+          <div fxLayout="column">
+            {{data.ItemUICategory.Name}}
+            <div class="patch">{{data.GamePatch.Name}}</div>
+          </div>
+        </div>
       </div>
+    </gubal-details-block>
+    <div class="description">
+      <gubal-details-block *ngIf="data.Description">
+        <p [innerHTML]="data.Description | xivUIText"></p>
+      </gubal-details-block>
     </div>
-    <gubal-details-row *ngIf="data.Description">
-      <p [innerHTML]="data.Description | xivUIText"></p>
-    </gubal-details-row>
-    <div class="patch" fxLayout="column" fxLayoutAlign="flex-end flex-end" fxLayoutGap="5px">
-      <span class="patch-name">{{data.GamePatch.Name}}</span>
+    <div fxLayout="column" fxLayoutAlign="flex-start flex-start" fxLayout.lt-sm="row" fxLayoutGap="10px">
+      <gubal-details-block *ngFor="let link of externalLinks">
+        <a href="{{link.url}}" target="_blank" class="external-link"><img src="{{link.icon}}" alt="" class="link-icon">{{link.toolName}}</a>
+      </gubal-details-block>
     </div>
-    <!--TODO-->
-    <!--<div class="right-sider">-->
-    <!--<div class="links" fxLayout="column" fxLayoutGap="3px">-->
-    <!--<a class="external-link" *ngFor="let link of externalLinks" href="{{link.url}}" target="_blank"-->
-    <!--fxFlex="1 1 auto" fxLayoutAlign="flex-start center">-->
-    <!--<img class="link-icon" src="{{link.icon}}" alt=""> {{link.toolName}}-->
-    <!--</a>-->
-    <!--</div>-->
-    <!--</div>-->
   </div>
   <div class="details" fxLayout="row wrap" fxLayoutGap="10px">
     <div class="details-card" *ngFor="let block of blocks">

@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { GubalAngularToolsModule } from '../../../../../../libs/gubal-angular-tools/src';
 import { ItemActionDetailsComponent } from './item-action-details/item-action-details.component';
 import { CoreModule } from '../../core/core.module';
+import { ItemGearDetailsComponent } from './item-gear-details/item-gear-details.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { CoreModule } from '../../core/core.module';
 
     CoreModule
   ],
-  declarations: [ItemComponent, ItemActionDetailsComponent]
+  declarations: [ItemComponent, ItemActionDetailsComponent, ItemGearDetailsComponent]
 })
 export class ItemModule {
 }

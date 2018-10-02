@@ -1,10 +1,12 @@
-<div fxLayout="column" fxLayoutGap="3px" *ngIf="actionDetails$ | async as actionDetails; else loader">
-  <div class="stat-row" gdColumns="3" *ngFor="let bonus of actionDetails">
-        <div class="stat-name" fxFlex>{{bonus.stat.Name}}</div>
-        <div class="bonus-nq" fxFlex>{{bonus.value}}% (max {{bonus.max}})</div>
-        <div class="bonus-hq" fxFlex>HQ: {{bonus.HQvalue}}% (max {{bonus.HQmax}})</div>
+<gubal-details-block [title]="'ACTION'" *ngIf="actionDetails$ | async as actionDetails; else loader">
+  <div fxLayout="column" fxLayoutGap="3px" class="bonuses">
+    <div class="stat-row" gdColumns="3" *ngFor="let bonus of actionDetails">
+      <div class="stat-name" fxFlex>{{bonus.stat.Name}}</div>
+      <div class="bonus-nq" fxFlex>{{bonus.value}}% (max {{bonus.max}})</div>
+      <div class="bonus-hq" fxFlex>HQ: {{bonus.HQvalue}}% (max {{bonus.HQmax}})</div>
+    </div>
   </div>
-</div>
+</gubal-details-block>
 <ng-template #loader>
   <gubal-loader></gubal-loader>
 </ng-template>
