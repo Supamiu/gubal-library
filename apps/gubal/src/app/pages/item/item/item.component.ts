@@ -37,7 +37,7 @@ export class ItemComponent implements OnInit {
             icon: 'https://xivdb.com/img/ui/GarlandLogo.png'
           },
           {
-            url: `http://www.garlandtools.org/db/#item/${item.Name_en.toString().split(' ').join('_')}`,
+            url: `https://ffxiv.gamerescape.com/wiki/${item.Name_en.toString().split(' ').join('_')}`,
             toolName: 'Gamer Escape',
             icon: 'https://xivdb.com/img/ui/GE.png'
           }
