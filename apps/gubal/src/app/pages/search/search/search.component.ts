@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { XivapiService } from '@xivapi/angular-client';
+import { XivapiSearchOptions, XivapiService } from '@xivapi/angular-client';
 
 @Component({
   selector: 'gubal-search',
@@ -18,8 +18,9 @@ export class SearchComponent {
   constructor(private route: ActivatedRoute, private xivapi: XivapiService) {
     this.request$ = this.route.queryParamMap.pipe(
       map(query => {
-        return {
-          string: query.get('string')
+        return <XivapiSearchOptions>{
+          string: query.get('string'),
+          staging: true
         };
       }),
       mergeMap(searchOptions => {
@@ -29,7 +30,7 @@ export class SearchComponent {
     this.results$ = this.request$.pipe(
       map(response => response.Results.map(result => {
           // TODO i18n slug part
-          return { ...result, uri: `/${result.GameType.toLowerCase()}/${result.ID}/${result.Name.split(' ').join('+')}` };
+          return { ...result, uri: `/${result.UrlType.toLowerCase()}/${result.ID}/${result.Name.split(' ').join('+')}` };
         }
       ))
     );

@@ -48,7 +48,7 @@
     "@nguniversal/express-engine": "^6.1.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.1.0",
     "@nrwl/nx": "6.3.1",
-    "@xivapi/angular-client": "^0.6.7",
+    "@xivapi/angular-client": "^0.7.1",
     "core-js": "^2.5.4",
     "ng-zorro-antd": "^1.6.0",
     "rxjs": "^6.2.2",
