@@ -14,16 +14,17 @@ h2, h3 {
   margin-bottom: 10px;
 }
 
+.language-flag {
+  height: 24px;
+  width: 24px;
+}
+
 .details-card {
   max-width: 80vw;
   margin-bottom: 10px;
   padding: 10px;
   background-color: rgba(0, 0, 0, .3);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-gubal-details-block.item-card {
-  max-width: 400px;
 }
 
 .patch {
@@ -34,6 +35,7 @@ gubal-details-block.item-card {
 .external-link {
   color: inherit;
   text-decoration: none;
+
   .link-icon {
     width: 24px;
     margin-right: 5px;

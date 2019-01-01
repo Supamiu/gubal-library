@@ -2,13 +2,33 @@
   <div class="item-banner" fxLayout="row wrap" fxLayout.lt-sm="column"
        fxLayoutAlign="flex-start flex-start" fxLayoutAlign.lt-sm="center center" fxLayoutGap="10px">
     <gubal-details-block class="item-card">
-      <div class="icon-and-name" fxLayout="row" fxLayoutAlign="flex-start flex-start" fxLayoutGap="10px">
+      <div class="icon-and-name" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center center"
+           fxLayoutAlign="flex-start flex-start"
+           fxLayoutGap="10px">
         <gubal-icon [icon]="data.Icon"></gubal-icon>
         <div class="name-and-desc" fxLayout="column">
           <h2>{{data.Name}}</h2>
           <div fxLayout="column">
             {{data.ItemUICategory.Name}}
             <div class="patch">{{data.GamePatch?.Name}}</div>
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutGap="5px">
+          <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="flex-start center">
+            <img src="/assets/icons/english.png" class="language-flag" alt="EN">
+            <div>{{data.Name_en}}</div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="flex-start center">
+            <img src="/assets/icons/german.png" class="language-flag" alt="DE">
+            <div>{{data.Name_de}}</div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="flex-start center">
+            <img src="/assets/icons/french.png" class="language-flag" alt="FR">
+            <div>{{data.Name_fr}}</div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="flex-start center">
+            <img src="/assets/icons/japanese.png" class="language-flag" alt="JA">
+            <div>{{data.Name_ja}}</div>
           </div>
         </div>
       </div>
@@ -20,7 +40,8 @@
     </div>
     <div fxLayout="column" fxLayoutAlign="flex-start flex-start" fxLayout.lt-sm="row" fxLayoutGap="10px">
       <gubal-details-block *ngFor="let link of externalLinks">
-        <a href="{{link.url}}" target="_blank" class="external-link"><img src="{{link.icon}}" alt="" class="link-icon">{{link.toolName}}</a>
+        <a href="{{link.url}}" target="_blank" class="external-link"><img src="{{link.icon}}" alt=""
+                                                                          class="link-icon">{{link.toolName}}</a>
       </gubal-details-block>
     </div>
   </div>
