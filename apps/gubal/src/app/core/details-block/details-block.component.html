@@ -1,4 +1,6 @@
-<div class="details-block" fxLayout="column" fxLayoutAlign="flex-start flex-start" fxLayoutGap="3px">
-  <span class="details-title" *ngIf="title">{{title}}</span>
-  <ng-content></ng-content>
+<div class="details-container">
+  <div class="details-block" fxLayout="column" fxLayoutAlign="flex-start flex-start" fxLayoutGap="3px">
+    <span class="details-title" *ngIf="title">{{title}}</span>
+    <ng-content></ng-content>
+  </div>
 </div>
