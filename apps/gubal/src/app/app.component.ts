@@ -3,6 +3,7 @@ import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { debounceTime, filter, map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { XivapiSearchOptions } from '@xivapi/angular-client';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'gubal-root',
@@ -18,7 +19,7 @@ export class AppComponent {
 
   filters$: BehaviorSubject<XivapiSearchOptions> = new BehaviorSubject<XivapiSearchOptions>({});
 
-  constructor(router: Router, activeRoute: ActivatedRoute) {
+  constructor(router: Router, activeRoute: ActivatedRoute, translate: TranslateService) {
     this.initialSearchQueryValue$ = activeRoute.queryParamMap.pipe(
       map(queryParams => queryParams.get('string'))
     );
@@ -32,8 +33,11 @@ export class AppComponent {
         };
       })
     ).subscribe(options => {
-      router.navigate(['search'], {queryParams: options});
+      router.navigate(['search'], { queryParams: options });
     });
+
+    translate.setDefaultLang('en');
+    translate.use('en');
   }
 
 

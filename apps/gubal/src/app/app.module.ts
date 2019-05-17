@@ -5,12 +5,14 @@ import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { XivapiClientModule } from '@xivapi/angular-client';
 import { ItemModule } from './pages/item/item.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchModule } from './pages/search/search.module';
 import { WorkInProgressModule } from './pages/work-in-progress/work-in-progress.module';
 import { SearchRoutingModule } from './pages/search/search-routing.module';
 import { ItemRoutingModule } from './pages/item/item-routing.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslationsLoaderFactory } from './translations-loader';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,8 +30,17 @@ import { ItemRoutingModule } from './pages/item/item-routing.module';
     SearchRoutingModule,
     FlexLayoutModule,
 
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: TranslationsLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+
     // This must always be imported at the very end for routing purpose
-    WorkInProgressModule,
+    WorkInProgressModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "serve:ssr": "node dist/server",
+    "serve:ssr": "node dist/gubal-webpack/server.js",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "build": "ng build && ng run gubal:server && npm run webpack:server && npm run build:functions && npm run copy:hosting",
     "test": "ng test",
@@ -47,6 +47,7 @@
     "@ngrx/store": "7.0.0",
     "@nguniversal/express-engine": "^7.0.2",
     "@nguniversal/module-map-ngfactory-loader": "^7.0.2",
+    "@ngx-translate/core": "^11.0.1",
     "@nrwl/nx": "7.1.1",
     "@xivapi/angular-client": "^0.10.6",
     "core-js": "^2.5.4",
